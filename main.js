@@ -7,11 +7,13 @@
   /* ------------------------------------------------------------------
      0. تنظیمات پایه
   ------------------------------------------------------------------ */
-  var CFG = window.siteConfig;
-  if (!CFG) {
-    console.error('[salaleh] فایل src/config.js پیدا نشد یا خالی است.');
-    return;
-  }
+ var CFG = window.siteConfig;
+
+if (!CFG) {
+  console.error('[salaleh] config.js لود نشده است.');
+  document.body.classList.remove('is-loading');
+  return;
+}
 
   var REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var isTouch = window.matchMedia('(hover: none), (pointer: coarse)').matches || 'ontouchstart' in window;
