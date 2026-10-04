@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#070518" />
+<title>سلاله تقی پور — ۱۱ مهر</title>
+<meta name="description" content="یک تجربه‌ی تولد تعاملی و سینمایی برای سلاله تقی پور." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@200;300;400;500;600;700;800;900&family=Lalezar&display=swap" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23c084fc'/%3E%3Cstop offset='.5' stop-color='%23f9a8d4'/%3E%3Cstop offset='1' stop-color='%23fcd34d'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ctext y='.9em' x='50%25' text-anchor='middle' font-size='90'%3E%E2%9C%A6%3C/text%3E%3C/svg%3E" />
+<link rel="stylesheet" href="src/styles.css" />
+</head>
+
+<body class="is-loading">
+
+<!-- ═══════════ لایه‌های زمینه ═══════════ -->
+<div class="bg-veil" aria-hidden="true"></div>
+<div class="grain" aria-hidden="true"></div>
+<div class="spotlight" id="spotlight" aria-hidden="true"></div>
+<div class="cursor" id="cursor" aria-hidden="true"><span class="cursor__dot"></span></div>
+
+<!-- ذرات نور -->
+<div class="dust" id="dust" aria-hidden="true"></div>
+
+<!-- پرده و فلاش ترنزیشن -->
+<div class="flash" id="flash" aria-hidden="true"></div>
+<div class="curtain" id="curtain" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+
+<!-- ═══════════ ۰ · بارگذاری ═══════════ -->
+<div class="loader" id="loader" role="status" aria-live="polite">
+  <div class="loader__ring"><i></i><i></i><i></i></div>
+  <p class="loader__text" id="loaderText">برای یک لحظه...</p>
+  <div class="loader__bar"><span id="loaderBar"></span></div>
+</div>
+
+<!-- ═══════════ ۱ · پرده تاریکی / انتظار ═══════════ -->
+<div class="overture" id="overture">
+  <div class="overture__core" id="ovCore"><span></span></div>
+  <div class="overture__copy">
+    <p class="ov-line" data-beat="0"></p>
+    <p class="ov-line" data-beat="1"></p>
+    <p class="ov-date" id="ovDate"></p>
+    <p class="ov-cap" id="ovCap"></p>
+  </div>
+  <div class="overture__actions">
+    <button class="btn btn--ghost" id="ovCta" type="button">ادامه</button>
+    <span class="overture__hint" id="ovHint">برای روشن کردن، لمس کن</span>
+  </div>
+</div>
+
+<!-- ═══════════ ۲ · پرده نام ═══════════ -->
+<div class="namestage" id="nameStage">
+  <div class="namestage__halo"></div>
+  <h1 class="namestage__name" id="nsName">سلاله</h1>
+  <p class="namestage__wish" id="nsWish">تولدت مبارک</p>
+  <button class="tease" id="nsTease" type="button">
+    <span class="tease__label">فکر کردی همین بود؟</span>
+    <span class="tease__sub">بزن تا ببینی چی پشتشه</span>
+  </button>
+</div>
+
+<!-- ═══════════ داستان اصلی ═══════════ -->
+<main class="story" id="story">
+
+  <!-- ۳ · هیرو -->
+  <section class="act act--hero" id="actHero" data-palette="hero">
+    <div class="act__inner hero">
+      <div class="hero__bg" aria-hidden="true"><i></i><i></i><i></i></div>
+
+      <div class="hero__portrait" data-parallax="0.06">
+        <div class="portrait__rings" aria-hidden="true"><i></i><i></i></div>
+        <figure class="portrait" id="heroFigure">
+          <img id="heroImg" alt="سلاله" decoding="async" />
+          <span class="portrait__sheen" aria-hidden="true"></span>
+        </figure>
+        <span class="portrait__plate" id="heroPlate">۱۱ مهر</span>
+      </div>
+
+      <div class="hero__text">
+        <p class="eyebrow reveal">امروز یه روز خاصه</p>
+        <h2 class="hero__title reveal" id="heroTitle"></h2>
+        <div class="rule reveal"><i></i></div>
+        <p class="hero__sub reveal" id="heroSub"></p>
+      </div>
+
+      <button class="scrollcue" id="scrollCue" type="button" aria-label="رفتن به بخش بعد">
+        <span></span><i></i>
+      </button>
+    </div>
+  </section>
+
+  <!-- ۴ · آرزو / بخش ویژه -->
+  <section class="act act--wish" id="actWish" data-palette="wish">
+    <div class="act__inner wish">
+      <div class="wish__aura" aria-hidden="true"></div>
+      <p class="eyebrow reveal" id="wishEyebrow"></p>
+      <h2 class="wish__title reveal" id="wishTitle"></h2>
+      <p class="wish__sub reveal" id="wishSub"></p>
+      <div class="wish__cta reveal">
+        <button class="btn btn--glass" id="wishCta" type="button"></button>
+        <span class="wish__pulse" aria-hidden="true"></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ۵ · گالری -->
+  <section class="act act--gallery" id="actGallery" data-palette="gallery">
+    <div class="act__inner gallery">
+      <header class="sec-head reveal">
+        <p class="eyebrow" id="galEyebrow"></p>
+        <h2 class="sec-title" id="galTitle"></h2>
+        <p class="sec-sub" id="galTeaser"></p>
+      </header>
+
+      <div class="deck" id="galleryDeck"><!-- کارت‌ها با جاوااسکریپت ساخته می‌شوند --></div>
+
+      <div class="deck__hint" id="deckHint">
+        <span class="deck__counter"><b id="deckCount">۱</b> / ۶</span>
+      </div>
+
+      <div class="gallery__reveal" id="galReveal" hidden>
+        <h3 class="reveal-title" id="galRevealTitle"></h3>
+        <div class="mosaic" id="galleryMosaic"><!-- تصاویر نمایش داده می‌شوند --></div>
+      </div>
+
+      <!-- سورپرایز ۰۲ : ستاره‌ی مخفی -->
+      <button class="sparkle" id="sparkle" type="button" aria-label="یک نقطه‌ی روشن"></button>
+    </div>
+  </section>
+
+  <!-- ۶ · خاطرات -->
+  <section class="act act--memory" id="actMemory" data-palette="memory">
+    <div class="act__inner memory">
+      <header class="sec-head reveal">
+        <p class="eyebrow" id="memEyebrow"></p>
+        <h2 class="sec-title" id="memTitle"></h2>
+        <p class="sec-sub" id="memSub"></p>
+      </header>
+      <div class="cards" id="memoryCards"><!-- کارت‌ها با جاوااسکریپت ساخته می‌شوند --></div>
+      <div class="memory__more">
+        <button class="btn btn--line" id="memMore" type="button">هنوز تموم نشده...</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ۷ · سورپرایز مخفی -->
+  <section class="act act--secret" id="actSecret" data-palette="secret">
+    <div class="act__inner secret">
+      <div class="secret__orb" aria-hidden="true"><i></i><i></i><i></i></div>
+      <header class="sec-head reveal">
+        <p class="eyebrow" id="secEyebrow"></p>
+        <h2 class="sec-title" id="secTitle"></h2>
+        <p class="sec-sub" id="secSub"></p>
+      </header>
+      <div class="secret__stage">
+        <button class="lantern" id="lantern" type="button" aria-label="یک فانوس کوچک">
+          <span class="lantern__glow"></span>
+          <span class="lantern__body"><i></i></span>
+          <span class="lantern__label" id="lanternLabel">لمس کن</span>
+        </button>
+        <div class="secret__dots" id="secDots" aria-hidden="true"></div>
+      </div>
+      <div class="secret__msg" id="secretMsg" hidden>
+        <h3 class="reveal-title" id="foundTitle"></h3>
+        <p class="reveal-text" id="foundBody"></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ۸ · پایان -->
+  <section class="act act--final" id="actFinal" data-palette="final">
+    <div class="act__inner final">
+      <div class="final__veil" aria-hidden="true"></div>
+      <p class="final__pre" id="finalPre"></p>
+      <h2 class="final__title" id="finalTitle"></h2>
+      <p class="final__sign" id="finalSign"></p>
+      <div class="final__msg" id="finalMsg" hidden></div>
+      <div class="final__next" id="finalNext" hidden>
+        <p class="final__tease" id="baleTease"></p>
+        <button class="btn btn--gold" id="baleBtn" type="button"></button>
+      </div>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <p><span id="footName"></span> · <span id="footDate"></span></p>
+  </footer>
+</main>
+
+<!-- ═══════════ مودال پیام ═══════════ -->
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" hidden>
+  <div class="modal__bg" id="modalBg"></div>
+  <div class="modal__box" id="modalBox">
+    <button class="modal__close" id="modalClose" type="button" aria-label="بستن">✕</button>
+    <h3 class="modal__title" id="modalTitle"></h3>
+    <div class="modal__msg" id="modalMsg"></div>
+    <span class="modal__sig" id="modalSig"></span>
+  </div>
+</div>
+
+<!-- ═══════════ دکمه موسیقی ═══════════ -->
+<button class="music" id="musicBtn" type="button" aria-label="پخش موسیقی" hidden>
+  <span class="music__disc"><i></i><i></i><i></i></span>
+  <span class="music__txt">موسیقی</span>
+</button>
+
+<!-- ═══════════ ردیف راهنما ═══════════ -->
+<div class="hint" id="hint" aria-hidden="true"><span id="hintTxt"></span></div>
+
+<!-- ═══════════ پایان‌نامه / سورپرایز ۰۳ ═══════════ -->
+<div class="coda" id="coda" hidden>
+  <p class="coda__line">این تازه اولش بود.</p>
+  <button class="btn btn--line" id="replayBtn" type="button">دوباره ببین</button>
+</div>
+
+<audio id="bgm" preload="none" loop></audio>
+
+<script src="src/config.js"></script>
+<script src="src/main.js" defer></script>
+</body>
+</html>
